@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - GoalsRight
+  - tiempoJuego
+  - ball
+  - Ai
+  - GoalsLeft
+  - canHeadAi
+  - canvas
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - ground_layer
+  - Water
+  - UI
+  - ground_layer
+  - ground_Layer
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Canvas
+    uniqueID: 4013680213
+    locked: 0
+  - name: New Layer 2
+    uniqueID: 2435542909
+    locked: 0
