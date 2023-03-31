@@ -14,20 +14,20 @@ public class EndGame : MonoBehaviour
     void Start()
     {
         
-        goals.text = GamerControler.number_GoalsLeft + "_" + GamerControler.number_GoalsRight;
+        //goals.text = GamerControler.number_GoalsLeft + "_" + GamerControler.number_GoalsRight;
 
-        if (GamerControler.number_GoalsLeft > GamerControler.number_GoalsRight)
-        {
-            result.text = "You Lose";
-        }
-        else if (GamerControler.number_GoalsLeft == GamerControler.number_GoalsRight)
-        {
-            result.text = "Draw";
-        }
-        else
-        {
-            result.text = "You Win";
-        }
+        //if (GamerControler.number_GoalsLeft > GamerControler.number_GoalsRight)
+        //{
+        //    result.text = "You Lose";
+        //}
+        //else if (GamerControler.number_GoalsLeft == GamerControler.number_GoalsRight)
+        //{
+        //    result.text = "Draw";
+        //}
+        //else
+        //{
+        //    result.text = "You Win";
+        //}
     }
     public void ButtonHome()
     {

@@ -17,11 +17,11 @@ public class NetHeatAi : MonoBehaviour
     }
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "ball") ;
+        if (collision.gameObject.tag == "ball")
         {
             _ball.GetComponent<Rigidbody>().velocity = new Vector3(0,0);
             _ball.GetComponent<Rigidbody>().AddForce(new Vector2(300,400));
 
-        }
+        };
     }
 }

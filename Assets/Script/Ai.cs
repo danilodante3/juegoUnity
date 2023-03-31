@@ -6,7 +6,7 @@ public class Ai : MonoBehaviour
     public float rangerDenfece, speed;
     public Transform denfece, checkGround;
     public GameObject _ball;
-    private Rigidbody2D rb_Ai;
+    public Rigidbody2D rb_Ai;
     public bool canShootAi, canHead, grounded;
     public LayerMask ground_Layer;
 
@@ -49,7 +49,7 @@ public class Ai : MonoBehaviour
             }
             else
             {
-                rb_Ai.velocity = new Vector2(-Time.deltaTime * speed, rb_Ai.velocity.y);
+                rb_Ai.velocity = new Vector2(Time.deltaTime * speed, rb_Ai.velocity.y);
             }
         }
         else
@@ -69,7 +69,7 @@ public class Ai : MonoBehaviour
     {
         if (canShootAi)
         {
-            _ball.GetComponent<Rigidbody2D>().AddForce(new Vector2(30, 50));
+            _ball.GetComponent<Rigidbody2D>().AddForce(new Vector2(200, 150));
         }
     }
     public void Jump()
