@@ -79,6 +79,7 @@ public class Player : MonoBehaviour
         _aniPlayer.SetTrigger("Shoot");
         btnShoot.transform.localScale = new Vector3(1.2f, 1.2f, 1);
         btnShoot.GetComponent<Image>().CrossFadeAlpha(0.4f, 0.1f, true);
+
         if (canShoot == true)
         {
             _ball.GetComponent<Rigidbody2D>().AddForce(new Vector2(-400, 500));

@@ -15,6 +15,7 @@ TagManager:
   - ground
   - check ground
   - grounded
+  - OrientBall
   layers:
   - Default
   - TransparentFX

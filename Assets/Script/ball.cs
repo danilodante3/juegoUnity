@@ -5,7 +5,7 @@ using UnityEngine;
 public class ball : MonoBehaviour
 {
     private GameObject _Player, _Ai;
-    public GameObject gooals;
+    public GameObject gooals, orientBall;
     void Start()
     {
         _Player = GameObject.FindGameObjectWithTag("Player");
@@ -22,6 +22,7 @@ public class ball : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             _Player.GetComponent<Player>().canShoot= true;
+            Instantiate(orientBall, transform.position, Quaternion.identity);
         }
         if (collision.gameObject.tag == "Ai")
         {
