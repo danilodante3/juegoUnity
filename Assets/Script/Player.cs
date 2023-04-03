@@ -6,11 +6,11 @@ public class Player : MonoBehaviour
 {
 
     public float horialAxis, speed;
-    private Rigidbody2D rb_player;
+    public Rigidbody2D rb_player;
     public bool canShoot, grounded, canHead;
     private GameObject _ball;
     public Transform checkGround;
-    [SerializeField] private LayerMask ground_Layer;
+    [SerializeField] public LayerMask ground_Layer;
     public int hashShoot, hashMove;
     public Animator _aniPlayer;
     void Start()
@@ -18,11 +18,13 @@ public class Player : MonoBehaviour
         rb_player = GetComponent<Rigidbody2D>();
         _ball = GameObject.FindGameObjectWithTag("ball");
         hashShoot = Animator.StringToHash("Shoot");
-        hashMove = Animator.StringToHash("Move");
+        hashShoot = Animator.StringToHash("Move");
+
     }
     void Update()
     {
-        
+       
+
     }
     private void FixedUpdate()
     {
@@ -39,7 +41,6 @@ public class Player : MonoBehaviour
         }
     }
     public void StopMove()
-
     {
         _aniPlayer.SetBool("Move", false);
         horialAxis = 0;
@@ -51,16 +52,17 @@ public class Player : MonoBehaviour
         {
             _ball.GetComponent<Rigidbody2D>().AddForce(new Vector2(-400, 500));
         }
- }
+    }
 
-    public void Jump() 
+
+    public void Jump()
     {
-           
 
-        if(grounded == true && GamerControler.instance.isScore == false && GamerControler.instance.EndMatch == false)
+
+        if (grounded == true && GamerControler.instance.isScore == false && GamerControler.instance.EndMatch == false)
         {
+            canHead = true;
             rb_player.velocity = new Vector2(rb_player.velocity.x, 15);
         }
     }
-
-}  
+}

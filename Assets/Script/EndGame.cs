@@ -13,21 +13,22 @@ public class EndGame : MonoBehaviour
 
     void Start()
     {
-        
-        //goals.text = GamerControler.number_GoalsLeft + "_" + GamerControler.number_GoalsRight;
+        GamerControler GamerControler = FindObjectOfType<GamerControler>();
 
-        //if (GamerControler.number_GoalsLeft > GamerControler.number_GoalsRight)
-        //{
-        //    result.text = "You Lose";
-        //}
-        //else if (GamerControler.number_GoalsLeft == GamerControler.number_GoalsRight)
-        //{
-        //    result.text = "Draw";
-        //}
-        //else
-        //{
-        //    result.text = "You Win";
-        //}
+        goals.text = GamerControler.number_GoalsLeft + " " + GamerControler.number_GoalsRight;
+
+        if (GamerControler.number_GoalsLeft > GamerControler.number_GoalsRight)
+        {
+            result.text = "You Lose";
+        }
+        else if (GamerControler.number_GoalsLeft == GamerControler.number_GoalsRight)
+        {
+            result.text = "Draw";
+        }
+        else
+        {
+           result.text = "You Win";
+        }
     }
     public void ButtonHome()
     {

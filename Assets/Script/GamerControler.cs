@@ -93,6 +93,10 @@ public class GamerControler : MonoBehaviour
             {
                 _ball.GetComponent<Rigidbody2D>().AddForce(new Vector2(100, 200));
             }
+            else
+            {
+                _ball.GetComponent<Rigidbody2D>().AddForce(new Vector2(100, 200));
+            }
         }
     }
     public void ButtonPause()
@@ -110,7 +114,7 @@ public class GamerControler : MonoBehaviour
         number_GoalsLeft= 3;
         number_GoalsRight= 0;
         tiempoJuego = 0;
-        WinL.SetActive(true);
+        WinL.SetActive(false);
         Time.timeScale = 1;
         StartCoroutine(WaitEndGame());
     }

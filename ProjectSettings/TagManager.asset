@@ -11,6 +11,10 @@ TagManager:
   - GoalsLeft
   - canHeadAi
   - canvas
+  - Ground
+  - ground
+  - check ground
+  - grounded
   layers:
   - Default
   - TransparentFX
