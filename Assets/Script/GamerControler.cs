@@ -15,6 +15,8 @@ public class GamerControler : MonoBehaviour
     public GameObject WinL;
     public Image flagLeft, flagRigh;
     public Text nameLeft, nameRigh;
+    public AudioClip losingMusic;
+
 
     private void Awake()
     {
@@ -24,7 +26,7 @@ public class GamerControler : MonoBehaviour
         }
     }
 
-
+    [System.Obsolete]
     void Start()
     {
         number_GoalsRight = 0;
@@ -49,8 +51,15 @@ public class GamerControler : MonoBehaviour
         txt_GoolsLeft.text = number_GoalsLeft.ToString();
         txt_tiempoJuego.text = tiempoJuego.ToString();
 
+        if (number_GoalsLeft < number_GoalsRight && tiempoJuego > 30)
 
-        
+        {
+            if (!GetComponent<AudioSource>().isPlaying)
+            {
+                GetComponent<AudioSource>().clip = losingMusic;
+                GetComponent<AudioSource>().Play();
+            }
+        }
     }
 
     [System.Obsolete]
@@ -109,6 +118,8 @@ public class GamerControler : MonoBehaviour
         WinL.SetActive(false);
         Time.timeScale = 1;
     }
+
+    [System.Obsolete]
     public void perder()
     {
         number_GoalsLeft= 3;
