@@ -26,12 +26,12 @@ public class GamerControler : MonoBehaviour
         }
     }
 
-    [System.Obsolete]
+    
     void Start()
     {
         number_GoalsRight = 0;
         number_GoalsLeft  = 0;
-        tiempoJuego = 5;
+        tiempoJuego = 90;
         _ball = GameObject.FindGameObjectWithTag("ball");
         _Ai = GameObject.FindGameObjectWithTag("Ai");
         _Player = GameObject.FindGameObjectWithTag("Player");
@@ -51,7 +51,7 @@ public class GamerControler : MonoBehaviour
         txt_GoolsLeft.text = number_GoalsLeft.ToString();
         txt_tiempoJuego.text = tiempoJuego.ToString();
 
-        if (number_GoalsLeft < number_GoalsRight && tiempoJuego > 30)
+        if (number_GoalsRight < number_GoalsLeft && tiempoJuego > 30)
 
         {
             if (!GetComponent<AudioSource>().isPlaying)
@@ -62,7 +62,7 @@ public class GamerControler : MonoBehaviour
         }
     }
 
-    [System.Obsolete]
+    
     IEnumerator InicioJuego()
     {
         while (true)
@@ -95,7 +95,7 @@ public class GamerControler : MonoBehaviour
         if (EndMatch == false)
         {
             _ball.transform.position = new Vector3(0, 0, 0);
-            _ball.GetComponent<Rigidbody2D>().velocity = new Vector3(0, 0, 0);
+            _ball.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
             _Ai.transform.position = new Vector3(-5, 0, 0);
             _Player.transform.position = new Vector3(6, 0, 0);
             if (winPlayer)

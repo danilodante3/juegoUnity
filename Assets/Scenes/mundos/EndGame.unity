@@ -873,7 +873,7 @@ GameObject:
   - component: {fileID: 1130478980}
   - component: {fileID: 1130478979}
   m_Layer: 5
-  m_Name: Argentina (1)
+  m_Name: Ecuador
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -892,7 +892,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1984280424}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1141,7 +1141,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Final
+  m_Text: Win
 --- !u!222 &1427383489
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1185,8 +1185,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -131, y: -33}
-  m_SizeDelta: {x: -598.66, y: -336.39}
+  m_AnchoredPosition: {x: 6.9000244, y: -32}
+  m_SizeDelta: {x: -602.51, y: -336.39}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1599093093
 MonoBehaviour:
@@ -1221,7 +1221,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 1 1
+  m_Text: 1 1      1 1
 --- !u!222 &1599093094
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1229,86 +1229,6 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1599093091}
-  m_CullTransparentMesh: 1
---- !u!1 &1968669911
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1968669912}
-  - component: {fileID: 1968669914}
-  - component: {fileID: 1968669913}
-  m_Layer: 5
-  m_Name: Goles (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1968669912
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1968669911}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.68112, y: 2.0234866, z: 2.0234866}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1984280424}
-  m_RootOrder: 9
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 137, y: -33}
-  m_SizeDelta: {x: -598.66, y: -336.39}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1968669913
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1968669911}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.8509804, b: 0, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_FontData:
-    m_Font: {fileID: 12800000, guid: 24da5845031f3a349a55e816f6d4d19f, type: 3}
-    m_FontSize: 300
-    m_FontStyle: 0
-    m_BestFit: 1
-    m_MinSize: 0
-    m_MaxSize: 300
-    m_Alignment: 4
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: 1 1
---- !u!222 &1968669914
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1968669911}
   m_CullTransparentMesh: 1
 --- !u!1 &1984280420
 GameObject:
@@ -1412,7 +1332,6 @@ RectTransform:
   - {fileID: 1298945038}
   - {fileID: 15119166}
   - {fileID: 204321608}
-  - {fileID: 1968669912}
   - {fileID: 1130478978}
   m_Father: {fileID: 0}
   m_RootOrder: 1
@@ -1434,7 +1353,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f66107346080e84eb7ce930d44f2830, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flagLeft: {fileID: 0}
+  flagLeft: {fileID: 1130478979}
   flagRight: {fileID: 2121077116}
   nameLeft: {fileID: 1096942165}
   nameRight: {fileID: 30511144}

@@ -10,32 +10,32 @@ public class EndGame : MonoBehaviour
     public Image flagLeft, flagRight;
     public Text nameLeft, nameRight;
     public Text result, goals;
-    public static GamerControler instance;
+    public static GamerControler GamerControler;
 
     void Start()
     {
-        goals.text = instance.number_GoalsLeft + " " + instance.number_GoalsRight;
+        goals.text = GamerControler.number_GoalsLeft + " " + GamerControler.number_GoalsRight;
 
-        if (instance.number_GoalsLeft > instance.number_GoalsRight)
+        if (GamerControler.number_GoalsLeft > GamerControler.number_GoalsRight)
         {
             result.text = "You Lose";
         }
-        else if (instance.number_GoalsLeft == instance.number_GoalsRight)
+        else if (GamerControler.number_GoalsLeft == GamerControler.number_GoalsRight)
         {
             result.text = "Draw";
         }
         else
         {
-           result.text = "You Win";
+            result.text = "You Win";
         }
     }
     public void ButtonHome()
     {
-       ;
+        ;
         SceneManager.LoadScene("Menu");
 
     }
-    public void ButtonMatch ()
+    public void ButtonMatch()
     {
         SceneManager.LoadScene("JUEGO");
     }
@@ -44,6 +44,6 @@ public class EndGame : MonoBehaviour
         SceneManager.LoadScene("MENU");
 
     }
-    
+
 }
 
