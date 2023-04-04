@@ -67,12 +67,11 @@ public class GamerControler : MonoBehaviour
                 GetComponent<AudioSource>().Play();
             }
         }
-        if (number_GoalsLeft < number_GoalsRight && tiempoJuego > 30)
-
+        else if (number_GoalsLeft < number_GoalsRight && tiempoJuego > 30)
         {
             if (!GetComponent<AudioSource>().isPlaying)
             {
-                GetComponent<AudioSource>().clip = losingMusic;
+                GetComponent<AudioSource>().clip = losingAi;
                 GetComponent<AudioSource>().Play();
             }
         }
