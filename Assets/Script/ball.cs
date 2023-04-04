@@ -6,6 +6,8 @@ public class ball : MonoBehaviour
 {
     private GameObject _Player, _Ai;
     public GameObject gooals, orientBall;
+    public float angleOrienBall = 30;
+    [SerializeField] private TrailRenderer tr;
     void Start()
     {
         _Player = GameObject.FindGameObjectWithTag("Player");
@@ -15,7 +17,7 @@ public class ball : MonoBehaviour
 
     void Update()
     {
-        
+        tr.emitting = true;
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

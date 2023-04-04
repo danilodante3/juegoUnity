@@ -10,18 +10,17 @@ public class EndGame : MonoBehaviour
     public Image flagLeft, flagRight;
     public Text nameLeft, nameRight;
     public Text result, goals;
+    public static GamerControler instance;
 
     void Start()
     {
-        GamerControler GamerControler = FindObjectOfType<GamerControler>();
+        goals.text = instance.number_GoalsLeft + " " + instance.number_GoalsRight;
 
-        goals.text = GamerControler.number_GoalsLeft + " " + GamerControler.number_GoalsRight;
-
-        if (GamerControler.number_GoalsLeft > GamerControler.number_GoalsRight)
+        if (instance.number_GoalsLeft > instance.number_GoalsRight)
         {
             result.text = "You Lose";
         }
-        else if (GamerControler.number_GoalsLeft == GamerControler.number_GoalsRight)
+        else if (instance.number_GoalsLeft == instance.number_GoalsRight)
         {
             result.text = "Draw";
         }
