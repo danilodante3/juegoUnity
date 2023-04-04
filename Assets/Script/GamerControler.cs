@@ -15,7 +15,7 @@ public class GamerControler : MonoBehaviour
     public GameObject WinL;
     public Image flagLeft, flagRigh;
     public Text nameLeft, nameRigh;
-    public AudioClip losingMusic;
+    public AudioClip losingMusic,losingAi;
 
 
     private void Awake()
@@ -45,6 +45,12 @@ public class GamerControler : MonoBehaviour
             {
             AudioListener.pause = !AudioListener.pause;
         }
+        if(Input.GetKeyDown(KeyCode.Space))
+
+
+            {
+            AudioListener.pause = !AudioListener.pause;
+        }
     }
     void Update()
     {
@@ -53,6 +59,15 @@ public class GamerControler : MonoBehaviour
         txt_tiempoJuego.text = tiempoJuego.ToString();
 
         if (number_GoalsRight < number_GoalsLeft && tiempoJuego > 30)
+
+        {
+            if (!GetComponent<AudioSource>().isPlaying)
+            {
+                GetComponent<AudioSource>().clip = losingMusic;
+                GetComponent<AudioSource>().Play();
+            }
+        }
+        if (number_GoalsLeft < number_GoalsRight && tiempoJuego > 30)
 
         {
             if (!GetComponent<AudioSource>().isPlaying)
@@ -145,7 +160,7 @@ public class GamerControler : MonoBehaviour
 
     }
 
-    [System.Obsolete]
+    
     IEnumerator WaitEndGame()
     {
         yield return new WaitForSeconds(3f);

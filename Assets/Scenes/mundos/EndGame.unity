@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 15119168}
   - component: {fileID: 15119167}
   m_Layer: 5
-  m_Name: Button (1)HOME
+  m_Name: Home
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -494,8 +494,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 332301985}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.0089, y: 0.0027, z: -1.3117316}
-  m_LocalScale: {x: 0.73296314, y: 0.5032589, z: 1}
+  m_LocalPosition: {x: 0.0004, y: 0.0027, z: -1.3117316}
+  m_LocalScale: {x: 0.6849769, y: 0.5032589, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
