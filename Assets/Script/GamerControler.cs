@@ -36,6 +36,7 @@ public class GamerControler : MonoBehaviour
         _Ai = GameObject.FindGameObjectWithTag("Ai");
         _Player = GameObject.FindGameObjectWithTag("Player");
         StartCoroutine(InicioJuego());
+
     }
     public void Musica()
     {
@@ -119,7 +120,7 @@ public class GamerControler : MonoBehaviour
         Time.timeScale = 1;
     }
 
-    [System.Obsolete]
+  
     public void perder()
     {
         number_GoalsLeft= 3;
@@ -127,7 +128,7 @@ public class GamerControler : MonoBehaviour
         tiempoJuego = 0;
         WinL.SetActive(false);
         Time.timeScale = 1;
-        StartCoroutine(WaitEndGame());
+        StartCoroutine(WaitEndGame()); 
     }
     public void Reiniciar()
     {

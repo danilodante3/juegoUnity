@@ -12,6 +12,7 @@ public class EndGame : MonoBehaviour
     public Text result, goals;
     public static GamerControler GamerControler;
 
+
     void Start()
     {
         goals.text = GamerControler.number_GoalsLeft + " " + GamerControler.number_GoalsRight;
