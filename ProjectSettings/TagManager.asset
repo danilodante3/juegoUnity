@@ -17,6 +17,7 @@ TagManager:
   - grounded
   - OrientBall
   - player2
+  - Win
   layers:
   - Default
   - TransparentFX
