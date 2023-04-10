@@ -58,7 +58,7 @@ public class GamerControler : MonoBehaviour
         txt_GoolsLeft.text = number_GoalsLeft.ToString();
         txt_tiempoJuego.text = tiempoJuego.ToString();
 
-        if (number_GoalsRight < number_GoalsLeft && tiempoJuego > 30)
+        if (number_GoalsRight < number_GoalsLeft && tiempoJuego > 05)
 
         {
             if (!GetComponent<AudioSource>().isPlaying)
@@ -67,7 +67,7 @@ public class GamerControler : MonoBehaviour
                 GetComponent<AudioSource>().Play();
             }
         }
-        else if (number_GoalsLeft < number_GoalsRight && tiempoJuego > 30)
+        else if (number_GoalsLeft < number_GoalsRight && tiempoJuego > 05)
         {
             if (!GetComponent<AudioSource>().isPlaying)
             {
