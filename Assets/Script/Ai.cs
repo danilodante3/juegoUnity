@@ -1,5 +1,6 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-
 
 public class Ai : MonoBehaviour
 {
@@ -44,25 +45,26 @@ public class Ai : MonoBehaviour
     {
         if (Mathf.Abs(_ball.transform.position.x - transform.position.x) < rangerDenfece)
         {
-            if (_ball.transform.position.x > transform.position.x && _ball.transform.position.y > -0)
+            if (_ball.transform.position.x > transform.position.x && _ball.transform.position.y < -0.5f)
             {
-                rb_Ai.velocity = new Vector2(-Time.deltaTime * speed, rb_Ai.velocity.y);
+                rb_Ai.velocity = new Vector2(Time.deltaTime * speed, rb_Ai.velocity.y);
+            }
+            else if (_ball.transform.position.x >= 0.5f && transform.position.x <= denfece.position.x)
+            {
+                rb_Ai.velocity = new Vector2(0, rb_Ai.velocity.y);
             }
             else
             {
-                rb_Ai.velocity = new Vector2(Time.deltaTime * speed, rb_Ai.velocity.y);
+                rb_Ai.velocity = new Vector2(-Time.deltaTime * speed, rb_Ai.velocity.y);
             }
         }
         else
         {
             if (transform.position.x > denfece.position.x)
             {
-                rb_Ai.velocity = new Vector2(Time.deltaTime * speed, rb_Ai.velocity.y);
-            }
-            else if (transform.position.x > denfece.position.x)
-            {
                 rb_Ai.velocity = new Vector2(-Time.deltaTime * speed, rb_Ai.velocity.y);
             }
+            
             else
             {
                 rb_Ai.velocity = new Vector2(0, rb_Ai.velocity.y);

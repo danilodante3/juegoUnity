@@ -155,7 +155,7 @@ MonoBehaviour:
   denfece: {fileID: 0}
   checkGround: {fileID: 1242471675425001509}
   _ball: {fileID: 0}
-  rb_Ai: {fileID: 0}
+  _player: {fileID: 0}
   canShootAi: 0
   canHead: 0
   grounded: 0
@@ -188,6 +188,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1242471675216523008}
   - component: {fileID: 1242471675216523134}
+  - component: {fileID: 3380814781483363969}
   - component: {fileID: 1242471675216523009}
   m_Layer: 0
   m_Name: Head
@@ -263,6 +264,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &3380814781483363969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1242471675216523011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81c347b9a6b5c8b45a09fe9be9434b45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _ball: {fileID: 0}
 --- !u!58 &1242471675216523009
 CircleCollider2D:
   m_ObjectHideFlags: 0

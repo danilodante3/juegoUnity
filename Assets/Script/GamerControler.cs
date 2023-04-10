@@ -162,7 +162,7 @@ public class GamerControler : MonoBehaviour
     
     IEnumerator WaitEndGame()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2f);
         Application.LoadLevel("EndGame");
     }
 }
