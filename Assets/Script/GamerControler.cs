@@ -127,14 +127,16 @@ public class GamerControler : MonoBehaviour
     {
         WinL.SetActive(true);
         Time.timeScale = 0;
+        AudioListener.pause = true;
     }
     public void botonresumen()
     {
         WinL.SetActive(false);
         Time.timeScale = 1;
+        AudioListener.pause = false;
     }
 
-  
+
     public void perder()
     {
         number_GoalsLeft= 3;

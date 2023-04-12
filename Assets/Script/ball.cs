@@ -5,8 +5,7 @@ using UnityEngine;
 public class ball : MonoBehaviour
 {
     private GameObject _Player, _Ai;
-    public GameObject gooals, orientBall;
-    public float angleOrienBall = 30;
+    public GameObject gooals;
     [SerializeField] private TrailRenderer tr;
     void Start()
     {
@@ -24,7 +23,6 @@ public class ball : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             _Player.GetComponent<Player>().canShoot= true;
-            Instantiate(orientBall, transform.position, Quaternion.identity);
         }
         if (collision.gameObject.tag == "Ai")
         {
