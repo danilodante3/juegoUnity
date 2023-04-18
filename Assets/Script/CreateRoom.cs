@@ -20,14 +20,4 @@ public class CreateRoom : MonoBehaviour
         options.MaxPlayers = 4;
         PhotonNetwork.JoinOrCreateRoom("basic", options, TypedLobby.Default);
     }
-    public override void OnCreatedRoom()
-    {
-
-        MasterManager.DebugConsole.AddText("created room successfully.", this);
-    }
-    public override void OnCreatedRoomFailed(short returnCod, string message)
-    {
-
-        MasterManager.DebugConsole.AddText("Room creation failed:" + message, this);
-    }
 }

@@ -9,8 +9,8 @@ public class conexionMulti : MonoBehaviourPunCallbacks
     private void Start()
     {
         print("Conectadon al servidor.");
-        PhotonNetwork.NickName = MasterManager.GameSettings.NickName;
-        PhotonNetwork.GameVersion = MasterManager.GameSettings.GameVersion;
+       // PhotonNetwork.NickName = MasterManager.GameSettings.NickName;
+        //PhotonNetwork.GameVersion = MasterManager.GameSettings.GameVersion;
         PhotonNetwork.ConnectUsingSettings();
     }
 
