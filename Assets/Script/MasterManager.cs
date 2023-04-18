@@ -1,0 +1,15 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+[CreateAssetMenu(menuName = "Singletons/MasterManager")]
+public class MasterManager : SingletonScriptableObject<MasterManager> 
+
+{
+    [SerializeField]
+    private GameSetting _gameSetting;
+    public GameSetting GameSetting { get { return Instance._gameSetting; } }
+
+}
+
+
