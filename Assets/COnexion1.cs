@@ -11,7 +11,7 @@ public class COnexion1 : MonoBehaviourPunCallbacks
     {
         PhotonNetwork.GameVersion = "0.1";
         PhotonNetwork.ConnectUsingSettings();
-        Debug.Log("Se va a conectar al servidor Player");
+        Debug.Log("Se va a conectar al servidor Master");
 
     }
 
@@ -19,7 +19,7 @@ public class COnexion1 : MonoBehaviourPunCallbacks
     
     public override void OnConnectedToMaster()
     {
-        Debug.Log("Se ha conectado al servidor Player");
+        Debug.Log("Se ha conectado al servidor Maestro");
     }
     public override void OnDisconnected(DisconnectCause cause)
     {

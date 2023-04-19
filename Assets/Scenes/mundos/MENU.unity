@@ -602,7 +602,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 382117042}
-  - component: {fileID: 382117041}
+  - component: {fileID: 382117043}
   m_Layer: 0
   m_Name: Conex
   m_TagString: Untagged
@@ -610,18 +610,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &382117041
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 382117040}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30b0f93c7e8e95a438aed95d477540fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &382117042
 Transform:
   m_ObjectHideFlags: 0
@@ -637,6 +625,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &382117043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 382117040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7482d0d7bb1cd9469d19641a5589e62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numero: 0
 --- !u!1 &475399640
 GameObject:
   m_ObjectHideFlags: 0
@@ -948,9 +949,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 382117041}
-        m_TargetAssemblyTypeName: Photon.Pun.MonoBehaviourPunCallbacks, PhotonUnityNetworking
-        m_MethodName: OnJoinedRoom
+      - m_Target: {fileID: 382117043}
+        m_TargetAssemblyTypeName: Unirse, Assembly-CSharp
+        m_MethodName: UnirseRoom
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1308,9 +1309,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GestorDeRed, Assembly-CSharp
-        m_MethodName: JoinRoom
+      - m_Target: {fileID: 475399645}
+        m_TargetAssemblyTypeName: Menu, Assembly-CSharp
+        m_MethodName: jugar
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
