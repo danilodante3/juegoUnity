@@ -28,7 +28,7 @@ public class Zjuego : MonoBehaviourPunCallbacks
     {
         jugadores = PhotonNetwork.PlayerList;
         jugador = jugadores.Length;
-        Debug.Log("Se unió el jugador no." + jugador + "a la sala");
+        Debug.Log("Se unió el jugador no." + jugador);
         PhotonNetwork.NickName = jugador.ToString();
     }
 }
