@@ -20,6 +20,8 @@ public class Cuartos1 : MonoBehaviourPunCallbacks
         Debug.Log("Se va a crear una nueva Room");
         PhotonNetwork.JoinOrCreateRoom("Sala no." + numero, new RoomOptions() { MaxPlayers = 2 }, TypedLobby.Default);
         Debug.Log("Se creoo una nueva Room" + numero);
+        PhotonNetwork.LoadLevel("ONLINE");
+
 
     }
     public override void OnCreateRoomFailed(short returnCode, string Message)

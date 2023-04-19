@@ -98,6 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   codigosQueIgnorar: []
+  PhotonView: {fileID: 0}
 --- !u!50 &7707735320498861777
 Rigidbody2D:
   serializedVersion: 4

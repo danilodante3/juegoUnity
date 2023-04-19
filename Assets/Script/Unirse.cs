@@ -32,6 +32,8 @@ public class Unirse : MonoBehaviourPunCallbacks
         Debug.Log("Se va a crear una nueva sala");
         PhotonNetwork.JoinOrCreateRoom("Sala no." + numero, new RoomOptions() { MaxPlayers = 2 }, TypedLobby.Default);
         Debug.Log("Se creo una nueva room" + numero);
+        PhotonNetwork.LoadLevel("ONLINE");
+
     }
     public override void OnCreateRoomFailed(short returnCode, string Message)
     {
