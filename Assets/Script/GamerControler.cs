@@ -159,7 +159,30 @@ public class GamerControler : MonoBehaviour
 
     }
 
-    
-    
+    public void MostrarPanel(string nombreEquipo, int golesEquipo)
+    {
+        WinL.SetActive(true);
+        Time.timeScale = 0;
+        AudioListener.pause = true;
+
+        Text txtResultado = WinL.GetComponentInChildren<Text>();
+        txtResultado.text = nombreEquipo + " ganó " + golesEquipo + " a " + number_GoalsLeft;
+
+        Image escudoEquipo = WinL.transform.Find("Image").GetComponent<Image>();
+        if (golesEquipo > number_GoalsLeft)
+        {
+            escudoEquipo.sprite = flagRigh.sprite; // Mostrar la imagen de la bandera del equipo derecho
+        }
+        else if (golesEquipo < number_GoalsLeft)
+        {
+            escudoEquipo.sprite = flagLeft.sprite; // Mostrar la imagen de la bandera del equipo izquierdo
+        }
+        else
+        {
+            escudoEquipo.sprite = null; // Mostrar una imagen por defecto si hay empate
+        }
+    }
+
+
 }
 
