@@ -1,33 +1,40 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using Photon.Pun;
+using UnityEngine;
 using Photon.Realtime;
 
 public class Cuartos1 : MonoBehaviourPunCallbacks
 {
     public int numero;
-    // Start is called before the first frame update
+
     void Start()
     {
-        
+        // Conexión al servidor de Photon
+        PhotonNetwork.ConnectUsingSettings();
     }
-
-    // Update is called once per frame
     public void CrearRoom()
     {
         numero = Random.Range(1, 100);
         Debug.Log("Se va a crear una nueva Room");
         PhotonNetwork.JoinOrCreateRoom("Sala no." + numero, new RoomOptions() { MaxPlayers = 2 }, TypedLobby.Default);
-        Debug.Log("Se creoo una nueva Room" + numero);
-        PhotonNetwork.LoadLevel("ONLINE");
-
-
     }
-    public override void OnCreateRoomFailed(short returnCode, string Message)
+
+    public override void OnConnectedToMaster()
     {
-        
-        Debug.Log("Nose pudo crear la sala, se volvera");
+        Debug.Log("Conectado al servidor de Photon");
         CrearRoom();
+    }
+
+    public override void OnCreateRoomFailed(short returnCode, string message)
+    {
+        Debug.Log("No se pudo crear la sala, se intentará de nuevo.");
+        CrearRoom();
+    }
+
+    public override void OnJoinedRoom()
+    {
+        Debug.Log("Unido a la sala: " + PhotonNetwork.CurrentRoom.Name);
+        PhotonNetwork.LoadLevel("ONLINE");
     }
 }

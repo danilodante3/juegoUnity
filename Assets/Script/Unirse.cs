@@ -15,12 +15,20 @@ public class Unirse : MonoBehaviourPunCallbacks
     }
     public void UnirseRoom()
     {
-        PhotonNetwork.JoinRandomRoom();
-        Debug.Log("Se unio a una room aleatoria");
+            PhotonNetwork.ConnectUsingSettings();
+
+        if (PhotonNetwork.IsConnectedAndReady)
+        {
+            PhotonNetwork.JoinRandomRoom();
+            Debug.Log("Se unio a una room aleatoria");
+        }
+        else
+        {
+            Debug.Log("Aun no se ha conectado al servidor, espera a OnConnectedToMaster o OnJoinedLobby");
+        }
 
     }
 
-    // Update is called once per frame
     public override void OnJoinRandomFailed(short returnCode, string message)
     {
         Debug.Log("Nose pudo unir a ninguna, se creara una nueva sala");
