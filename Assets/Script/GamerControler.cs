@@ -90,7 +90,6 @@ public class GamerControler : MonoBehaviour
             }
             else
             {
-                StartCoroutine(WaitEndGame());
                 EndMatch = true;
                 break;
             }
@@ -144,7 +143,6 @@ public class GamerControler : MonoBehaviour
         tiempoJuego = 0;
         WinL.SetActive(false);
         Time.timeScale = 1;
-        StartCoroutine(WaitEndGame()); 
     }
     public void Reiniciar()
     {
@@ -162,10 +160,6 @@ public class GamerControler : MonoBehaviour
     }
 
     
-    IEnumerator WaitEndGame()
-    {
-        yield return new WaitForSeconds(2f);
-        Application.LoadLevel("EndGame");
-    }
+    
 }
 
