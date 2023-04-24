@@ -18,6 +18,8 @@ TagManager:
   - OrientBall
   - player2
   - Win
+  - WinR
+  - Player2
   layers:
   - Default
   - TransparentFX

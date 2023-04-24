@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Photon.Pun;
 
 public class GamerControler : MonoBehaviour
 {
@@ -31,11 +32,13 @@ public class GamerControler : MonoBehaviour
     {
         number_GoalsRight = 0;
         number_GoalsLeft  = 0;
-        tiempoJuego = 90;
+        tiempoJuego = 200;
         _ball = GameObject.FindGameObjectWithTag("ball");
         _Ai = GameObject.FindGameObjectWithTag("Ai");
         _Player = GameObject.FindGameObjectWithTag("Player");
         StartCoroutine(InicioJuego());
+        PhotonNetwork.AutomaticallySyncScene = true;
+
 
     }
     public void Musica()

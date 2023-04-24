@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Photon.Pun;
 using UnityEngine;
 
 public class ball : MonoBehaviour
@@ -40,6 +41,8 @@ public class ball : MonoBehaviour
                 GamerControler.instance.number_GoalsLeft++;
                 GamerControler.instance.isScore = true;
                 GamerControler.instance.ContinueMatch (true);
+                PhotonNetwork.AutomaticallySyncScene = true;
+
             }
         }
         if (collision.gameObject.tag == "GoalsLeft")
