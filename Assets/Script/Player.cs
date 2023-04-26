@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Networking;
+using Photon.Realtime;
 
 public class Player : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class Player : MonoBehaviour
     public float horialAxis, speed;
     public Rigidbody2D rb_player;
     public bool canShoot, grounded, canHead;
-    private GameObject _ball;
+    private GameObject _ball, _player2;
     public Transform checkGround;
     [SerializeField] public LayerMask ground_Layer;
     public int hashShoot, hashMove;
@@ -18,7 +19,9 @@ public class Player : MonoBehaviour
     {
         rb_player = GetComponent<Rigidbody2D>();
         _ball = GameObject.FindGameObjectWithTag("ball");
-       
+        _player2 = GameObject.FindWithTag("Player");
+
+
 
     }
 
