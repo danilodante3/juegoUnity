@@ -263,13 +263,8 @@ MonoBehaviour:
   ground_Layer:
     serializedVersion: 2
     m_Bits: 64
-  btnShoot: {fileID: 0}
-  btnMoveLeft: {fileID: 0}
-  btnMoveRight: {fileID: 0}
-  btnJump: {fileID: 0}
   hashShoot: 0
   hashMove: 0
-  jugadorGO: {fileID: 7544886380550510599}
 --- !u!58 &1558763260470140619
 CircleCollider2D:
   m_ObjectHideFlags: 0

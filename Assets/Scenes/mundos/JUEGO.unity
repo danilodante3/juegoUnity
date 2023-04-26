@@ -6478,6 +6478,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8951899331438011478, guid: 6c3b2b1f0136fe84380845b37987febf, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 8951899331438011479, guid: 6c3b2b1f0136fe84380845b37987febf, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -6530,6 +6534,10 @@ PrefabInstance:
       propertyPath: btnShoot
       value: 
       objectReference: {fileID: 1052631944}
+    - target: {fileID: 8951899331438011480, guid: 6c3b2b1f0136fe84380845b37987febf, type: 3}
+      propertyPath: grounded
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8951899331438011480, guid: 6c3b2b1f0136fe84380845b37987febf, type: 3}
       propertyPath: btnMoveLeft
       value: 

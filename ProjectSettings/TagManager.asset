@@ -20,6 +20,10 @@ TagManager:
   - Win
   - WinR
   - Player2
+  - btnMoveRight
+  - btnJump
+  - btnMoveLeft
+  - btnShoot
   layers:
   - Default
   - TransparentFX

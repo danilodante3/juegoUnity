@@ -12,7 +12,10 @@ public class Juego : MonoBehaviourPunCallbacks
     public int jugador;
     public GameObject jugadorGO;
     public PhotonView PV;
-    
+    public GameObject player2Prefab;
+    public GameObject player2GO;
+
+
 
     void Start()
     {
@@ -35,16 +38,26 @@ public class Juego : MonoBehaviourPunCallbacks
     public override void OnJoinedRoom()
     {
 
+
         jugadores = PhotonNetwork.PlayerList;
         jugador = jugadores.Length;
         Debug.Log("Se unio al jugador no." + jugador + "a la sala");
         PhotonNetwork.NickName= jugador.ToString();
 
         jugadorGO = PhotonNetwork.Instantiate("Player2", new Vector3(3.98f, -1.04694f, 0f), Quaternion.Euler(0f, 180f, 0f), 0);
+        jugadorGO.GetComponent<Player>();
 
         PhotonNetwork.AutomaticallySyncScene = true;
 
-          
+
+    }
+    public override void OnPlayerLeftRoom(Photon.Realtime.Player otherPlayer)
+    {
+
+        Debug.Log("Unjugador Abandono la sala");
+        PhotonNetwork.LoadLevel("MENU");
+        PhotonNetwork.LeaveRoom();
+
     }
 
 

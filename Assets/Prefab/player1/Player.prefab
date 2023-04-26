@@ -277,7 +277,7 @@ GameObject:
   - component: {fileID: 2645349931290580676}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -334,6 +334,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   horialAxis: 0
   speed: 300
+  rb_player: {fileID: 0}
   canShoot: 0
   grounded: 0
   canHead: 0
@@ -341,6 +342,9 @@ MonoBehaviour:
   ground_Layer:
     serializedVersion: 2
     m_Bits: 64
+  hashShoot: 0
+  hashMove: 0
+  PV: {fileID: 0}
 --- !u!58 &2645349931290580676
 CircleCollider2D:
   m_ObjectHideFlags: 0

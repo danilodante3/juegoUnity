@@ -48,7 +48,7 @@ GameObject:
   - component: {fileID: 7707735320498861779}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -113,13 +113,9 @@ MonoBehaviour:
   ground_Layer:
     serializedVersion: 2
     m_Bits: 64
-  btnShoot: {fileID: 0}
-  btnMoveLeft: {fileID: 0}
-  btnMoveRight: {fileID: 0}
-  btnJump: {fileID: 0}
   hashShoot: 0
   hashMove: 0
-  _aniPlayer: {fileID: 7707735320498861779}
+  PV: {fileID: 0}
 --- !u!58 &7707735320498861778
 CircleCollider2D:
   m_ObjectHideFlags: 0
