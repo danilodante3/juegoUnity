@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
-
+using UnityEngine.SceneManagement;
 
 public class Juego : MonoBehaviourPunCallbacks
 {
@@ -42,15 +42,25 @@ public class Juego : MonoBehaviourPunCallbacks
         jugadores = PhotonNetwork.PlayerList;
         jugador = jugadores.Length;
         Debug.Log("Se unio al jugador no." + jugador + "a la sala");
-        PhotonNetwork.NickName= jugador.ToString();
+        PhotonNetwork.NickName = jugador.ToString();
 
-        jugadorGO = PhotonNetwork.Instantiate("Player2", new Vector3(3.98f, -1.04694f, 0f), Quaternion.Euler(0f, 180f, 0f), 0);
+        jugadorGO = PhotonNetwork.Instantiate("Player2", new Vector3(3.98f, -1.04694f, 0f), Quaternion.Euler(0f, 0f, 0f), 0);
         jugadorGO.GetComponent<Player>();
 
         PhotonNetwork.AutomaticallySyncScene = true;
+        jugadorGO.name = "Player2";
+
 
 
     }
+    public void ReturnToMenu()
+    {
+        PhotonNetwork.LeaveRoom();
+        SceneManager.LoadScene("MENU");
+    }
+
+
+
     public override void OnPlayerLeftRoom(Photon.Realtime.Player otherPlayer)
     {
 

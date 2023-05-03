@@ -2555,5 +2555,15 @@ namespace Photon.Pun
                 PhotonNetwork.NetworkingClient.ConnectToRegionMaster(regionHandler.BestRegion.Code);
             }
         }
+
+        public static void GetRoomList(TypedLobby lobby, List<RoomInfo> roomList)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static RoomInfo[] GetRoomList()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

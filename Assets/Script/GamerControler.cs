@@ -13,11 +13,14 @@ public class GamerControler : MonoBehaviour
     public bool isScore, EndMatch;
     public float tiempoJuego;
     private GameObject _ball, _Ai, _Player;
-    public GameObject WinL;
+    public GameObject WinL, WinM;
     public Image flagLeft, flagRigh;
     public Text nameLeft, nameRigh;
-    public AudioClip losingMusic,losingAi;
+    public Text nameLeftResult, nameRightResult;
+    public Text txt_GoolsRigh, txt_GoolsLef;
+    public int number_GoalsRigh, number_GoalsLef;
 
+    public AudioClip losingMusic, losingAi;
 
     private void Awake()
     {
@@ -27,42 +30,28 @@ public class GamerControler : MonoBehaviour
         }
     }
 
-    
     void Start()
     {
         number_GoalsRight = 0;
-        number_GoalsLeft  = 0;
-        tiempoJuego = 290;
+        number_GoalsLeft = 0;
+        tiempoJuego = 300;
         _ball = GameObject.FindGameObjectWithTag("ball");
         _Ai = GameObject.FindGameObjectWithTag("Ai");
         _Player = GameObject.FindGameObjectWithTag("Player");
         StartCoroutine(InicioJuego());
         PhotonNetwork.AutomaticallySyncScene = true;
 
-
     }
-    public void Musica()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-       
-            {
-            AudioListener.pause = !AudioListener.pause;
-        }
-        if(Input.GetKeyDown(KeyCode.Space))
 
-
-            {
-            AudioListener.pause = !AudioListener.pause;
-        }
-    }
     void Update()
     {
         txt_GoolsRight.text = number_GoalsRight.ToString();
         txt_GoolsLeft.text = number_GoalsLeft.ToString();
         txt_tiempoJuego.text = tiempoJuego.ToString();
+        txt_GoolsRigh.text = number_GoalsRight.ToString();
+        txt_GoolsLef.text = number_GoalsLeft.ToString();
 
-        if (number_GoalsRight < number_GoalsLeft && tiempoJuego > 05)
-
+        if (number_GoalsRight < number_GoalsLeft && tiempoJuego > 5)
         {
             if (!GetComponent<AudioSource>().isPlaying)
             {
@@ -70,7 +59,7 @@ public class GamerControler : MonoBehaviour
                 GetComponent<AudioSource>().Play();
             }
         }
-        else if (number_GoalsLeft < number_GoalsRight && tiempoJuego > 05)
+        else if (number_GoalsLeft < number_GoalsRight && tiempoJuego > 5)
         {
             if (!GetComponent<AudioSource>().isPlaying)
             {
@@ -78,9 +67,15 @@ public class GamerControler : MonoBehaviour
                 GetComponent<AudioSource>().Play();
             }
         }
+
+        if (tiempoJuego <= 0)
+        {
+            EndMatch = true;
+            ShowResultPanel();
+
+        }
     }
 
-    
     IEnumerator InicioJuego()
     {
         while (true)
@@ -89,7 +84,6 @@ public class GamerControler : MonoBehaviour
             if (tiempoJuego > 0)
             {
                 tiempoJuego--;
-
             }
             else
             {
@@ -98,11 +92,10 @@ public class GamerControler : MonoBehaviour
             }
         }
     }
+
     public void ContinueMatch(bool winPlayer)
     {
         StartCoroutine(WaitContinueMatch(winPlayer));
-
-
     }
 
     IEnumerator WaitContinueMatch(bool winPlayer)
@@ -114,6 +107,12 @@ public class GamerControler : MonoBehaviour
             _ball.transform.position = new Vector3(0, 0, 0);
             _ball.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
             _Ai.transform.position = new Vector3(-5, 0, 0);
+            GameObject player2 = GameObject.Find("Player2");
+            if (player2 != null)
+            {
+                player2.transform.position = _Player.transform.position;
+                player2.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            }
             _Player.transform.position = new Vector3(6, 0, 0);
             if (winPlayer)
             {
@@ -125,6 +124,7 @@ public class GamerControler : MonoBehaviour
             }
         }
     }
+
     public void ButtonPause()
     {
         WinL.SetActive(true);
@@ -161,31 +161,42 @@ public class GamerControler : MonoBehaviour
         SceneManager.LoadScene(SceneName);
 
     }
-
-    public void MostrarPanel(string nombreEquipo, int golesEquipo)
+    public void ShowResultPanel()
     {
-        WinL.SetActive(true);
+        WinM.SetActive(true);
+        if (number_GoalsLeft > number_GoalsRight)
+        {
+            flagLeft.enabled = true;
+            flagRigh.enabled = false;
+            nameLeftResult.text = "Winner";
+            nameRightResult.text = "Loser";
+        }
+        else if (number_GoalsRight > number_GoalsLeft)
+
+        {
+            flagLeft.enabled = false;
+            flagRigh.enabled = true;
+            nameLeftResult.text = "Loser";
+            nameRightResult.text = "Winner";
+        }
+
+        else 
+        {
+            flagLeft.enabled = false;
+            flagRigh.enabled = false;
+            nameLeft.text = "Left Team (Draw)";
+            nameRigh.text = "Right Team (Draw)";
+        }
+
         Time.timeScale = 0;
         AudioListener.pause = true;
-
-        Text txtResultado = WinL.GetComponentInChildren<Text>();
-        txtResultado.text = nombreEquipo + " ganó " + golesEquipo + " a " + number_GoalsLeft;
-
-        Image escudoEquipo = WinL.transform.Find("Image").GetComponent<Image>();
-        if (golesEquipo > number_GoalsLeft)
-        {
-            escudoEquipo.sprite = flagRigh.sprite; // Mostrar la imagen de la bandera del equipo derecho
-        }
-        else if (golesEquipo < number_GoalsLeft)
-        {
-            escudoEquipo.sprite = flagLeft.sprite; // Mostrar la imagen de la bandera del equipo izquierdo
-        }
-        else
-        {
-            escudoEquipo.sprite = null; // Mostrar una imagen por defecto si hay empate
-        }
     }
 
+    public void ReturnToMenu()
+    {
+        PhotonNetwork.LeaveRoom();
+        SceneManager.LoadScene("MENU");
+    }
 
 }
 

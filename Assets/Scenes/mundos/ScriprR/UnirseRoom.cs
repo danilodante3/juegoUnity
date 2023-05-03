@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
+using UnityEngine.SceneManagement;
 
 public class UnirseRoom : MonoBehaviourPunCallbacks
 {
@@ -11,6 +12,7 @@ public class UnirseRoom : MonoBehaviourPunCallbacks
     void Start()
     {
         PhotonNetwork.ConnectUsingSettings();
+
     }
 
     public void unirseRooms()
@@ -52,5 +54,6 @@ public class UnirseRoom : MonoBehaviourPunCallbacks
             PhotonNetwork.AutomaticallySyncScene = true;
 
     }
+   
 }
 

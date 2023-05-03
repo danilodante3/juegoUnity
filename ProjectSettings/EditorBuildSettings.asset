@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/mundos/Loading.unity
+    guid: e4290c1b5d7dc7a4fa40c47e065a92dc
+  - enabled: 1
     path: Assets/Scenes/mundos/MENU.unity
     guid: bf7e5bf6202cb764aac1eb3ac692eaa6
   - enabled: 1
@@ -14,9 +17,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/mundos/ONLINE.unity
     guid: 15993e4b91f853342a2e5480a1646863
-  - enabled: 1
-    path: Assets/Scenes/mundos/EndGame.unity
-    guid: 54d8a74855a0046489adc28e3eb6fe16
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 4515accf2a44d0c42b84290d73f576ec, type: 2}
     com.unity.adaptiveperformance.samsung.android.provider_settings: {fileID: 11400000, guid: 80eae6d8ae4c27e4ab4eb3e6f8fceb26, type: 2}
