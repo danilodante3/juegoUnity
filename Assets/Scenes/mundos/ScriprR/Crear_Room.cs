@@ -30,4 +30,9 @@ public class Crear_Room : MonoBehaviourPunCallbacks
         Debug.Log("No se pudo crear la sala, se volvera a intentar crear una");
         CrearRoom();
     }
+    public void jugar()
+    {
+        PhotonNetwork.LoadLevel("LISTA");
+
+    }
 }

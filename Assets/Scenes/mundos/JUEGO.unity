@@ -3257,8 +3257,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1707079213}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.33, y: -4.94, z: -1.12}
-  m_LocalScale: {x: 3.7496834, y: 0.65214765, z: 1}
+  m_LocalPosition: {x: 0.2256, y: -4.94, z: -1.12}
+  m_LocalScale: {x: 3.7163112, y: 0.65214765, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -3539,7 +3539,7 @@ MonoBehaviour:
   number_GoalsRigh: 0
   number_GoalsLef: 0
   losingMusic: {fileID: 8300000, guid: 1ea3c7175942b8b4fbc7535278c4f0f2, type: 3}
-  losingAi: {fileID: 8300000, guid: adc20d010fc2caa42aa1196c6bf13815, type: 3}
+  losingAi: {fileID: 8300000, guid: 29063a5150528cc48936ad7cc81687e2, type: 3}
 --- !u!4 &1756732293
 Transform:
   m_ObjectHideFlags: 0
@@ -3661,7 +3661,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: adc20d010fc2caa42aa1196c6bf13815, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 29063a5150528cc48936ad7cc81687e2, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
