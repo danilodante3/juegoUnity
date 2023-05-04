@@ -34,7 +34,7 @@ public class GamerControler : MonoBehaviour
     {
         number_GoalsRight = 0;
         number_GoalsLeft = 0;
-        tiempoJuego = 300;
+        tiempoJuego = 20;
         _ball = GameObject.FindGameObjectWithTag("ball");
         _Ai = GameObject.FindGameObjectWithTag("Ai");
         _Player = GameObject.FindGameObjectWithTag("Player");
