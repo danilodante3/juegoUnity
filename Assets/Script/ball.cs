@@ -11,25 +11,16 @@ public class ball : MonoBehaviour
     [SerializeField] private TrailRenderer tr;
         public float angleOrienBall = 30;
     private PhotonView photonView;
-
+     public float pushForce = 20f;
+    public float proximityThreshold = 1f;
+    private Rigidbody2D rb_Ball;
 
     void Start()
     {
         _Player = GameObject.FindGameObjectWithTag("Player");
         _Ai = GameObject.FindGameObjectWithTag("Ai");
-        if (photonView.IsMine)
-        {
-            GetComponent<Rigidbody2D>().isKinematic = false;
-            GetComponent<Rigidbody2D>().gravityScale = 1f;
-            GetComponent<PhotonTransformView>().enabled = true;
-        }
-        // Si este objeto no pertenece al cliente actual, deshabilitar la sincronización de la posición y la rotación
-        else
-        {
-            GetComponent<Rigidbody2D>().isKinematic = true;
-            GetComponent<Rigidbody2D>().gravityScale = 0f;
-            GetComponent<PhotonTransformView>().enabled = false;
-        }
+        rb_Ball = GetComponent<Rigidbody2D>();
+
     }
 
     void Update()
@@ -40,10 +31,18 @@ public class ball : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            _Player.GetComponent<Player>().canShoot = true;
-            
+            float distanceToPlayer = Vector2.Distance(transform.position, collision.transform.position);
+            if (distanceToPlayer < proximityThreshold)
+            {
+                _Player.GetComponent<Player>().canShoot = true;
+            }
         }
-        
+        if (collision.gameObject.tag == "Player")
+        {
+            _Player.GetComponent<Player>().canShoot = true;
+
+        }
+
         if (collision.gameObject.tag == "Ai")
         {
             _Ai.GetComponent<Ai>().canShootAi = true;
@@ -82,7 +81,16 @@ public class ball : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
+            float distanceToPlayer = Vector2.Distance(transform.position, collision.transform.position);
+            if (distanceToPlayer < proximityThreshold)
+            {
+                _Player.GetComponent<Player>().canShoot = false;
+            }
+        }
+        if (collision.gameObject.tag == "Player")
+        {
             _Player.GetComponent<Player>().canShoot = false;
+
         }
         if (collision.gameObject.tag == "Ai")
         {
@@ -94,4 +102,15 @@ public class ball : MonoBehaviour
             _Ai.GetComponent<Ai>().canHead = false;
         }
     }
+    public void ApplyPushAi(Vector2 pushDirection, float pushForce)
+    {
+        Ai aiComponent = FindObjectOfType<Ai>();
+        if (aiComponent != null)
+        {
+            aiComponent.ApplyPush(pushDirection, pushForce);
+        }
+
+        rb_Ball.AddForce(pushDirection * pushForce, ForceMode2D.Impulse);
+    }
+
 }

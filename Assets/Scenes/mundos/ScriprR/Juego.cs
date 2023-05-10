@@ -16,6 +16,7 @@ public class Juego : MonoBehaviourPunCallbacks
     public GameObject player2GO;
 
 
+    public GameObject[] jugadoresGO;
 
     void Start()
     {
@@ -32,27 +33,33 @@ public class Juego : MonoBehaviourPunCallbacks
         jugador = jugadores.Length;
         Debug.Log("Se unió el jugador no. " + jugador);
         PhotonNetwork.NickName = jugador.ToString();
-
+        
     }
 
     public override void OnJoinedRoom()
     {
-
-
         jugadores = PhotonNetwork.PlayerList;
         jugador = jugadores.Length;
-        Debug.Log("Se unio al jugador no." + jugador + "a la sala");
+        Debug.Log("Se unió al jugador no." + jugador + " a la sala");
         PhotonNetwork.NickName = jugador.ToString();
 
-        jugadorGO = PhotonNetwork.Instantiate("Player2", new Vector3(3.98f, -1.04694f, 0f), Quaternion.Euler(0f, 0f, 0f), 0);
-        jugadorGO.GetComponent<Player>();
+        if (jugador == 1)
+        {
+            jugadorGO = PhotonNetwork.Instantiate("Player", new Vector3(3.98f, -1.04694f, 0f), Quaternion.Euler(0f, 180f, 0f), 0);
+            jugadorGO.name = "Player";
+        }
+        else if (jugador == 2)
+        {
+            jugadorGO = PhotonNetwork.Instantiate("Player2", new Vector3(-5f, 0, 0f), Quaternion.Euler(0f, 0f, 0f), 0);
+            jugadorGO.name = "Player";
+
+        }
+
+        jugadoresGO = new GameObject[] { jugadorGO };
 
         PhotonNetwork.AutomaticallySyncScene = true;
-        jugadorGO.name = "Player2";
-
-
-
     }
+
     public void ReturnToMenu()
     {
         PhotonNetwork.LeaveRoom();

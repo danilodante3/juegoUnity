@@ -20,6 +20,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/mundos/ONLINE.unity
     guid: 15993e4b91f853342a2e5480a1646863
+  - enabled: 1
+    path: Assets/Scenes/mundos/ONLINEV1.unity
+    guid: fbe29939d6453434bb0b12e37b71f1e4
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 4515accf2a44d0c42b84290d73f576ec, type: 2}
     com.unity.adaptiveperformance.samsung.android.provider_settings: {fileID: 11400000, guid: 80eae6d8ae4c27e4ab4eb3e6f8fceb26, type: 2}

@@ -18,7 +18,7 @@ public class Crear_Room : MonoBehaviourPunCallbacks
         Debug.Log("Se va a crear una nueva room");
         PhotonNetwork.JoinOrCreateRoom("sala no." + numero, new RoomOptions() { MaxPlayers = 2 }, TypedLobby.Default);
         Debug.Log("Se creo una nueva room" + numero);
-        PhotonNetwork.LoadLevel("ONLINE");
+        PhotonNetwork.LoadLevel("ONLINEV1");
         PhotonNetwork.AutomaticallySyncScene = true;
 
 

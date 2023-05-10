@@ -4,14 +4,16 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Networking;
 using Photon.Realtime;
+using Photon.Pun;
 
 public class Player : MonoBehaviour
 {
-
+    private float lastPushTime = 0f;
+    private float pushCooldown = 2f;
     public float horialAxis, speed;
     public Rigidbody2D rb_player;
     public bool canShoot, grounded, canHead;
-    private GameObject _ball, _player2;
+    private GameObject _ball, _player2, _Ai;
     public Transform checkGround;
     [SerializeField] public LayerMask ground_Layer;
     public int hashShoot, hashMove;
@@ -39,8 +41,8 @@ public class Player : MonoBehaviour
     {
         if (GamerControler.instance.isScore == false && GamerControler.instance.EndMatch == false)
         {
-            GameObject player2 = GameObject.Find("Player2");
-            player2.GetComponent<Player>().horialAxis = value;
+            GameObject player = GameObject.Find("Player");
+            player.GetComponent<Player>().horialAxis = value;
 
         }
 
@@ -49,7 +51,7 @@ public class Player : MonoBehaviour
 
     public void StopMove(int value)
     {
-        GameObject player2 = GameObject.Find("Player2");
+        GameObject player2 = GameObject.Find("Player");
         player2.GetComponent<Player>().Move(0);
 
     }
@@ -76,26 +78,68 @@ public class Player : MonoBehaviour
         if (canShoot == true)
         {
             _ball.GetComponent<Rigidbody2D>().AddForce(new Vector2(-400, 500));
+
+            
+        }
+    }
+
+
+
+    public void ShootA()
+    {
+        GameObject ballObject = GameObject.FindGameObjectWithTag("ball");
+        if (ballObject != null)
+        {
+            Rigidbody2D ballRigidbody = ballObject.GetComponent<Rigidbody2D>();
+            if (ballRigidbody != null)
+            {
+                ballRigidbody.AddForce(new Vector2(0, 600));
+            }
+        }
+    }
+    public void PushAi()
+    {
+        // Verificar si ha pasado suficiente tiempo desde el último uso del botón
+        if (Time.time - lastPushTime >= pushCooldown)
+        {
+            // Actualizar el tiempo del último uso del botón
+            lastPushTime = Time.time;
+
+            float distance = Vector2.Distance(transform.position, _ball.transform.position);
+            if (distance < 1.5f)
+            {
+                Vector2 pushDirection = (_Ai.transform.position - _ball.transform.position).normalized;
+                ball ballComponent = _ball.GetComponent<ball>();
+                if (ballComponent != null)
+                {
+                    float pushForce = 50f; // Ajusta la fuerza del empuje según tus necesidades
+                    ballComponent.ApplyPushAi(pushDirection, pushForce);
+                    Debug.Log("¡Botón de empuje funciona correctamente!");
+                }
+            }
         }
     }
 
     public void Shoot1()
     {
-        if (canShoot)
+        GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
+        GameObject ballObject = GameObject.FindGameObjectWithTag("ball");
+
+        if (playerObject != null && ballObject != null)
         {
-            GameObject player2 = GameObject.Find("Player2");
-            if (player2 != null)
+            CircleCollider2D playerCollider = playerObject.GetComponent<CircleCollider2D>();
+            CircleCollider2D ballCollider = ballObject.GetComponent<CircleCollider2D>();
+            Rigidbody2D ballRigidbody = ballObject.GetComponent<Rigidbody2D>();
+
+            if (playerCollider != null && ballCollider != null && ballRigidbody != null && playerCollider.Distance(ballCollider).isOverlapped)
             {
-                Vector3 player2Position = player2.transform.position;
-                Vector2 forceDirection = new Vector2(player2Position.x - _ball.transform.position.x, player2Position.y - _ball.transform.position.y);
-                _ball.GetComponent<Rigidbody2D>().AddForce(forceDirection.normalized * 500f);
-            }
-            else
-            {
-                _ball.GetComponent<Rigidbody2D>().AddForce(new Vector2(-400, 500));
+                ballRigidbody.AddForce(new Vector2(-400, 500));
             }
         }
     }
+
+
+
 
 
     public void StopShoot()
@@ -110,7 +154,7 @@ public class Player : MonoBehaviour
             canHead = true;
             rb_player.velocity = new Vector2(rb_player.velocity.x, 15);
 
-            GameObject player2 = GameObject.Find("Player2");
+            GameObject player2 = GameObject.Find("Player");
             if (player2 != null)
             {
                 Player player2Script = player2.GetComponent<Player>();
@@ -125,4 +169,8 @@ public class Player : MonoBehaviour
     {
 
     }
+    
+
+
+
 }

@@ -288,7 +288,7 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 1920, y: 1080}
+  m_ReferenceResolution: {x: 2048, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -512,16 +512,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 210273830}
-        m_TargetAssemblyTypeName: Crear_Room, Assembly-CSharp
-        m_MethodName: jugar
+      - m_Target: {fileID: 475399645}
+        m_TargetAssemblyTypeName: Menu, Assembly-CSharp
+        m_MethodName: CargarJuego
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: JUEGO
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1128290997
@@ -772,7 +772,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5edaf101e590eec4f98cccfc97d2469a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numero: 0
+  playerPrefab: {fileID: 0}
+  player2Prefab: {fileID: 0}
 --- !u!4 &1813050666
 Transform:
   m_ObjectHideFlags: 0

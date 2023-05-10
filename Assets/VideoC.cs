@@ -71,4 +71,5 @@ public class VideoC : MonoBehaviourPunCallbacks
     {
         Debug.Log("Problemas al conectar al servidor...");
     }
+    
 }

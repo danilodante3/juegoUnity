@@ -19,6 +19,9 @@ public class GamerControler : MonoBehaviour
     public Text nameLeftResult, nameRightResult;
     public Text txt_GoolsRigh, txt_GoolsLef;
     public int number_GoalsRigh, number_GoalsLef;
+    private bool isPaused = false;
+        public GameObject winMPanel;
+   public AudioClip winSound,lolsad;
 
     public AudioClip losingMusic, losingAi;
 
@@ -34,13 +37,14 @@ public class GamerControler : MonoBehaviour
     {
         number_GoalsRight = 0;
         number_GoalsLeft = 0;
-        tiempoJuego = 20;
+        tiempoJuego = 280;
         _ball = GameObject.FindGameObjectWithTag("ball");
         _Ai = GameObject.FindGameObjectWithTag("Ai");
         _Player = GameObject.FindGameObjectWithTag("Player");
         StartCoroutine(InicioJuego());
         PhotonNetwork.AutomaticallySyncScene = true;
 
+        PhotonNetwork.AutomaticallySyncScene = true;
     }
 
     void Update()
@@ -107,12 +111,6 @@ public class GamerControler : MonoBehaviour
             _ball.transform.position = new Vector3(0, 0, 0);
             _ball.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
             _Ai.transform.position = new Vector3(-5, 0, 0);
-            GameObject player2 = GameObject.Find("Player2");
-            if (player2 != null)
-            {
-                player2.transform.position = _Player.transform.position;
-                player2.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-            }
             _Player.transform.position = new Vector3(6, 0, 0);
             if (winPlayer)
             {
@@ -122,6 +120,7 @@ public class GamerControler : MonoBehaviour
             {
                 _ball.GetComponent<Rigidbody2D>().AddForce(new Vector2(100, 200));
             }
+
         }
     }
 
@@ -133,7 +132,7 @@ public class GamerControler : MonoBehaviour
     }
     public void botonresumen()
     {
-        WinL.SetActive(false);
+        WinL.SetActive(false); 
         Time.timeScale = 1;
         AudioListener.pause = false;
     }
@@ -150,8 +149,30 @@ public class GamerControler : MonoBehaviour
     public void Reiniciar()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+        // Restablecer variables y componentes
+        number_GoalsRight = 0;
+        number_GoalsLeft = 0;
+        tiempoJuego = 280;
+        isScore = false;
+        EndMatch = false;
+
+        // Restablecer posiciones de objetos
+        _ball.transform.position = new Vector3(0, 0, 0);
+        _ball.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        _Ai.transform.position = new Vector3(-5, 0, 0);
+        _Player.transform.position = new Vector3(6, 0, 0);
+
+        // Reiniciar el juego
+        StartCoroutine(InicioJuego());
+
+        // Ocultar el panel WinM si está activo
+        if (WinM.activeSelf)
+        {
+            WinM.SetActive(false);
+        }
     }
+
     public void cerrar()
     {
         Application.Quit();
@@ -170,6 +191,7 @@ public class GamerControler : MonoBehaviour
             flagRigh.enabled = false;
             nameLeftResult.text = "Winner";
             nameRightResult.text = "Loser";
+            
         }
         else if (number_GoalsRight > number_GoalsLeft)
 
@@ -178,6 +200,7 @@ public class GamerControler : MonoBehaviour
             flagRigh.enabled = true;
             nameLeftResult.text = "Loser";
             nameRightResult.text = "Winner";
+            
         }
 
         else 
@@ -190,12 +213,47 @@ public class GamerControler : MonoBehaviour
 
         Time.timeScale = 0;
         AudioListener.pause = true;
+        AudioSource audioSource = GetComponent<AudioSource>();
+        audioSource.clip = winSound;
+        audioSource.Play();
     }
 
     public void ReturnToMenu()
+{
+    Time.timeScale = 1f;
+
+    // Restablecer las posiciones de los objetos relevantes
+    _ball.transform.position = Vector3.zero;
+    _Ai.transform.position = new Vector3(-5f, 0f, 0f);
+    _Player.transform.position = new Vector3(6f, 0f, 0f);
+
+    // Reiniciar otras configuraciones necesarias
+
+    // Cargar la escena "MENU"
+    SceneManager.LoadScene("MENU");
+}
+
+
+    public void jugar()
     {
         PhotonNetwork.LeaveRoom();
         SceneManager.LoadScene("MENU");
+
+    }
+    public void musica()
+    {
+        isPaused = !isPaused;
+
+        if (isPaused)
+        {
+            // Pausar los audios
+            AudioListener.pause = true;
+        }
+        else
+        {
+            // Reanudar los audios
+            AudioListener.pause = false;
+        }
     }
 
 }
