@@ -45,12 +45,12 @@ public class Juego : MonoBehaviourPunCallbacks
 
         if (jugador == 1)
         {
-            jugadorGO = PhotonNetwork.Instantiate("Player", new Vector3(3.98f, -1.04694f, 0f), Quaternion.Euler(0f, 180f, 0f), 0);
+            jugadorGO = PhotonNetwork.Instantiate("Player", new Vector3(3.98f, -1.04694f, 0f), Quaternion.Euler(0f, 0f, 0f), 0);
             jugadorGO.name = "Player";
         }
         else if (jugador == 2)
         {
-            jugadorGO = PhotonNetwork.Instantiate("Player2", new Vector3(-5f, 0, 0f), Quaternion.Euler(0f, 0f, 0f), 0);
+            jugadorGO = PhotonNetwork.Instantiate("Player2", new Vector3(-5f, 0, 0f), Quaternion.Euler(0f, 180f, 0f), 0);
             jugadorGO.name = "Player";
 
         }
