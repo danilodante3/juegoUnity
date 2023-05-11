@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using Photon.Pun;
 
-public class GamerControler : MonoBehaviour
+public class GamerControler : MonoBehaviourPunCallbacks
 {
     public static GamerControler instance;
     public Text txt_GoolsRight, txt_GoolsLeft, txt_tiempoJuego;
@@ -22,7 +22,8 @@ public class GamerControler : MonoBehaviour
     private bool isPaused = false;
         public GameObject winMPanel;
    public AudioClip winSound,lolsad;
-
+    private float startTime;
+    private float remainingTime;
     public AudioClip losingMusic, losingAi;
 
     private void Awake()
@@ -43,12 +44,20 @@ public class GamerControler : MonoBehaviour
         _Player = GameObject.FindGameObjectWithTag("Player");
         StartCoroutine(InicioJuego());
         PhotonNetwork.AutomaticallySyncScene = true;
+        // Obtener el tiempo inicial desde PhotonNetwork.Time
+        startTime = (float)PhotonNetwork.Time;
 
-        PhotonNetwork.AutomaticallySyncScene = true;
+        // Calcular el tiempo restante inicial
+        remainingTime = tiempoJuego;
     }
 
     void Update()
     {
+        float elapsedTime = (float)PhotonNetwork.Time - startTime;
+
+        remainingTime = tiempoJuego - elapsedTime;
+        txt_tiempoJuego.text = remainingTime.ToString();
+
         txt_GoolsRight.text = number_GoalsRight.ToString();
         txt_GoolsLeft.text = number_GoalsLeft.ToString();
         txt_tiempoJuego.text = tiempoJuego.ToString();
@@ -78,6 +87,7 @@ public class GamerControler : MonoBehaviour
             ShowResultPanel();
 
         }
+
     }
 
     IEnumerator InicioJuego()

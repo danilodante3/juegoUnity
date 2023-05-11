@@ -45,6 +45,7 @@ MonoBehaviour:
   - UpdateScore
   - UpdateTime
   - RPC_SendMessage
+  - CambiarPrefab
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

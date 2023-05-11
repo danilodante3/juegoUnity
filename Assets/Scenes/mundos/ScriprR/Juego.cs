@@ -70,11 +70,17 @@ public class Juego : MonoBehaviourPunCallbacks
 
     public override void OnPlayerLeftRoom(Photon.Realtime.Player otherPlayer)
     {
-
-        Debug.Log("Unjugador Abandono la sala");
-        PhotonNetwork.LoadLevel("MENU");
-        PhotonNetwork.LeaveRoom();
-
+        if (otherPlayer.IsLocal)
+        {
+            Debug.Log("El jugador local abandonó la sala");
+            PhotonNetwork.LoadLevel("MENU");
+            PhotonNetwork.LeaveRoom();
+        }
+        else
+        {
+            Debug.Log("El otro jugador abandonó la sala");
+            
+        }
     }
 
 

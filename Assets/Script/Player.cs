@@ -87,13 +87,18 @@ public class Player : MonoBehaviour
 
     public void ShootA()
     {
+        GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
         GameObject ballObject = GameObject.FindGameObjectWithTag("ball");
-        if (ballObject != null)
+
+        if (playerObject != null && ballObject != null)
         {
+            CircleCollider2D playerCollider = playerObject.GetComponent<CircleCollider2D>();
+            CircleCollider2D ballCollider = ballObject.GetComponent<CircleCollider2D>();
             Rigidbody2D ballRigidbody = ballObject.GetComponent<Rigidbody2D>();
-            if (ballRigidbody != null)
+
+            if (playerCollider != null && ballCollider != null && ballRigidbody != null && playerCollider.Distance(ballCollider).isOverlapped)
             {
-                ballRigidbody.AddForce(new Vector2(0, 600));
+                ballRigidbody.AddForce(new Vector2(0, 900));
             }
         }
     }
