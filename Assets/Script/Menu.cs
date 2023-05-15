@@ -6,12 +6,16 @@ using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour
 {
-   public void jugar()
+    public GameObject fadeEffect;
+
+
+    void Update()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
-
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            fadeEffect.SetActive(true);
+        }
     }
-
     public void Salir()
     {
         Debug.Log("salir...");
@@ -20,7 +24,8 @@ public class Menu : MonoBehaviour
     }
     public void CargarJuego()
     {
-        SceneManager.LoadScene("JUEGO");
+        SceneManager.LoadScene("Selector");
     }
+
 
 }

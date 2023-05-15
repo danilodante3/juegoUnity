@@ -8,8 +8,7 @@ using Photon.Pun;
 
 public class Player : MonoBehaviour
 {
-    private float lastPushTime = 0f;
-    private float pushCooldown = 2f;
+  
     public float horialAxis, speed;
     public Rigidbody2D rb_player;
     public bool canShoot, grounded, canHead;
@@ -17,7 +16,9 @@ public class Player : MonoBehaviour
     public Transform checkGround;
     [SerializeField] public LayerMask ground_Layer;
     public int hashShoot, hashMove;
-
+   
+    public float pushForce = 400f; // Nueva variable pushForce
+    public float proximityThreshold = 1.5f;
     void Start()
     {
         rb_player = GetComponent<Rigidbody2D>();
@@ -85,6 +86,7 @@ public class Player : MonoBehaviour
 
 
 
+
     public void ShootA()
     {
         GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
@@ -102,46 +104,9 @@ public class Player : MonoBehaviour
             }
         }
     }
-    public void PushAi()
-    {
-        // Verificar si ha pasado suficiente tiempo desde el último uso del botón
-        if (Time.time - lastPushTime >= pushCooldown)
-        {
-            // Actualizar el tiempo del último uso del botón
-            lastPushTime = Time.time;
+    
 
-            float distance = Vector2.Distance(transform.position, _ball.transform.position);
-            if (distance < 1.5f)
-            {
-                Vector2 pushDirection = (_Ai.transform.position - _ball.transform.position).normalized;
-                ball ballComponent = _ball.GetComponent<ball>();
-                if (ballComponent != null)
-                {
-                    float pushForce = 50f; // Ajusta la fuerza del empuje según tus necesidades
-                    ballComponent.ApplyPushAi(pushDirection, pushForce);
-                    Debug.Log("¡Botón de empuje funciona correctamente!");
-                }
-            }
-        }
-    }
-
-    public void Shoot1()
-    {
-        GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
-        GameObject ballObject = GameObject.FindGameObjectWithTag("ball");
-
-        if (playerObject != null && ballObject != null)
-        {
-            CircleCollider2D playerCollider = playerObject.GetComponent<CircleCollider2D>();
-            CircleCollider2D ballCollider = ballObject.GetComponent<CircleCollider2D>();
-            Rigidbody2D ballRigidbody = ballObject.GetComponent<Rigidbody2D>();
-
-            if (playerCollider != null && ballCollider != null && ballRigidbody != null && playerCollider.Distance(ballCollider).isOverlapped)
-            {
-                ballRigidbody.AddForce(new Vector2(-400, 500));
-            }
-        }
-    }
+    
 
 
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Photon.Pun;
 using UnityEngine;
 using Photon.Realtime;
+using System;
 
 public class ball : MonoBehaviour
 {
@@ -11,8 +12,8 @@ public class ball : MonoBehaviour
     [SerializeField] private TrailRenderer tr;
         public float angleOrienBall = 30;
     private PhotonView photonView;
-     public float pushForce = 20f;
-    public float proximityThreshold = 1f;
+     public float pushForce = 200f;
+    public float proximityThreshold = 1.9f;
     private Rigidbody2D rb_Ball;
 
     void Start()
@@ -26,9 +27,19 @@ public class ball : MonoBehaviour
     void Update()
     {
         tr.emitting = true;
+        
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.gameObject.tag == "Player")
+        {
+            float distanceToPlayer = Vector2.Distance(transform.position, collision.transform.position);
+            if (distanceToPlayer < proximityThreshold)
+            {
+                // Empujar a la IA si el jugador patea el balón estando cerca
+                _Ai.GetComponent<Rigidbody2D>().AddForce((_Ai.transform.position - transform.position).normalized * pushForce);
+            }
+        }
         if (collision.gameObject.tag == "Player")
         {
             float distanceToPlayer = Vector2.Distance(transform.position, collision.transform.position);
@@ -79,6 +90,7 @@ public class ball : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
+        
         if (collision.gameObject.tag == "Player")
         {
             float distanceToPlayer = Vector2.Distance(transform.position, collision.transform.position);
@@ -102,15 +114,6 @@ public class ball : MonoBehaviour
             _Ai.GetComponent<Ai>().canHead = false;
         }
     }
-    public void ApplyPushAi(Vector2 pushDirection, float pushForce)
-    {
-        Ai aiComponent = FindObjectOfType<Ai>();
-        if (aiComponent != null)
-        {
-            aiComponent.ApplyPush(pushDirection, pushForce);
-        }
-
-        rb_Ball.AddForce(pushDirection * pushForce, ForceMode2D.Impulse);
-    }
+   
 
 }

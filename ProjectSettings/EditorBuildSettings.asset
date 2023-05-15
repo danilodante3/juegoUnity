@@ -18,9 +18,12 @@ EditorBuildSettings:
     path: Assets/Scenes/mundos/LISTA.unity
     guid: 9654756eea808e04f9e4de4e445e3e1c
   - enabled: 1
+    path: Assets/Scenes/mundos/Selector.unity
+    guid: 98b1a2146a406a94d8bb468f4207999a
+  - enabled: 0
     path: Assets/Scenes/mundos/ONLINE.unity
     guid: 15993e4b91f853342a2e5480a1646863
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/mundos/ONLINEV1.unity
     guid: fbe29939d6453434bb0b12e37b71f1e4
   m_configObjects:

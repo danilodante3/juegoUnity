@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using Photon.Pun;
 
-public class GamerControler : MonoBehaviourPunCallbacks
+public class GamerControler : MonoBehaviour
 {
     public static GamerControler instance;
     public Text txt_GoolsRight, txt_GoolsLeft, txt_tiempoJuego;
@@ -20,10 +20,9 @@ public class GamerControler : MonoBehaviourPunCallbacks
     public Text txt_GoolsRigh, txt_GoolsLef;
     public int number_GoalsRigh, number_GoalsLef;
     private bool isPaused = false;
-        public GameObject winMPanel;
-   public AudioClip winSound,lolsad;
-    private float startTime;
-    private float remainingTime;
+    public GameObject winMPanel;
+    public AudioClip winSound, lolsad;
+    public SpriteRenderer headPlayer, shoePlayer, headAi, shoeAi;
     public AudioClip losingMusic, losingAi;
 
     private void Awake()
@@ -42,22 +41,28 @@ public class GamerControler : MonoBehaviourPunCallbacks
         _ball = GameObject.FindGameObjectWithTag("ball");
         _Ai = GameObject.FindGameObjectWithTag("Ai");
         _Player = GameObject.FindGameObjectWithTag("Player");
-        StartCoroutine(InicioJuego());
-        PhotonNetwork.AutomaticallySyncScene = true;
-        // Obtener el tiempo inicial desde PhotonNetwork.Time
-        startTime = (float)PhotonNetwork.Time;
 
-        // Calcular el tiempo restante inicial
-        remainingTime = tiempoJuego;
+
+        flagLeft.sprite = Uiteam.instance.FlagTeam[PlayerPrefs.GetInt("valueAi", 1) - 1];
+        nameLeft.text = Uiteam.instance.NameTeam[PlayerPrefs.GetInt("valueAi", 1) - 1];
+        flagRigh.sprite = Uiteam.instance.FlagTeam[PlayerPrefs.GetInt("valuePlayer", 1) - 1];
+        nameRigh.text = Uiteam.instance.NameTeam[PlayerPrefs.GetInt("valuePlayer", 1) - 1];
+
+        headPlayer.sprite = Uiteam.instance.head[PlayerPrefs.GetInt("valuePlayer", 1) - 1];
+        shoePlayer.sprite = Uiteam.instance.shoe[PlayerPrefs.GetInt("valuePlayer", 1) - 1];
+
+        headAi.sprite = Uiteam.instance.head[PlayerPrefs.GetInt("valueAi", 1) - 1];
+        shoeAi.sprite = Uiteam.instance.shoe[PlayerPrefs.GetInt("valueAi", 1) - 1];
+
+
+        StartCoroutine(InicioJuego());
+        
+        PhotonNetwork.AutomaticallySyncScene = true;
+
     }
 
     void Update()
     {
-        float elapsedTime = (float)PhotonNetwork.Time - startTime;
-
-        remainingTime = tiempoJuego - elapsedTime;
-        txt_tiempoJuego.text = remainingTime.ToString();
-
         txt_GoolsRight.text = number_GoalsRight.ToString();
         txt_GoolsLeft.text = number_GoalsLeft.ToString();
         txt_tiempoJuego.text = tiempoJuego.ToString();
@@ -87,7 +92,6 @@ public class GamerControler : MonoBehaviourPunCallbacks
             ShowResultPanel();
 
         }
-
     }
 
     IEnumerator InicioJuego()
@@ -142,7 +146,7 @@ public class GamerControler : MonoBehaviourPunCallbacks
     }
     public void botonresumen()
     {
-        WinL.SetActive(false); 
+        WinL.SetActive(false);
         Time.timeScale = 1;
         AudioListener.pause = false;
     }
@@ -150,8 +154,8 @@ public class GamerControler : MonoBehaviourPunCallbacks
 
     public void perder()
     {
-        number_GoalsLeft= 3;
-        number_GoalsRight= 0;
+        number_GoalsLeft = 3;
+        number_GoalsRight = 0;
         tiempoJuego = 0;
         WinL.SetActive(false);
         Time.timeScale = 1;
@@ -201,7 +205,7 @@ public class GamerControler : MonoBehaviourPunCallbacks
             flagRigh.enabled = false;
             nameLeftResult.text = "Winner";
             nameRightResult.text = "Loser";
-            
+
         }
         else if (number_GoalsRight > number_GoalsLeft)
 
@@ -210,10 +214,10 @@ public class GamerControler : MonoBehaviourPunCallbacks
             flagRigh.enabled = true;
             nameLeftResult.text = "Loser";
             nameRightResult.text = "Winner";
-            
+
         }
 
-        else 
+        else
         {
             flagLeft.enabled = false;
             flagRigh.enabled = false;
@@ -229,19 +233,19 @@ public class GamerControler : MonoBehaviourPunCallbacks
     }
 
     public void ReturnToMenu()
-{
-    Time.timeScale = 1f;
+    {
+        Time.timeScale = 1f;
 
-    // Restablecer las posiciones de los objetos relevantes
-    _ball.transform.position = Vector3.zero;
-    _Ai.transform.position = new Vector3(-5f, 0f, 0f);
-    _Player.transform.position = new Vector3(6f, 0f, 0f);
+        // Restablecer las posiciones de los objetos relevantes
+        _ball.transform.position = Vector3.zero;
+        _Ai.transform.position = new Vector3(-5f, 0f, 0f);
+        _Player.transform.position = new Vector3(6f, 0f, 0f);
 
-    // Reiniciar otras configuraciones necesarias
+        // Reiniciar otras configuraciones necesarias
 
-    // Cargar la escena "MENU"
-    SceneManager.LoadScene("MENU");
-}
+        // Cargar la escena "MENU"
+        SceneManager.LoadScene("MENU");
+    }
 
 
     public void jugar()
@@ -267,4 +271,3 @@ public class GamerControler : MonoBehaviourPunCallbacks
     }
 
 }
-

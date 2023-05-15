@@ -259,9 +259,6 @@ MonoBehaviour:
   canShoot: 0
   grounded: 1
   canHead: 1
-  _ball: {fileID: 0}
-  _player2: {fileID: 0}
-  _Ai: {fileID: 0}
   checkGround: {fileID: 7875175380116215409}
   ground_Layer:
     serializedVersion: 2
@@ -315,8 +312,8 @@ MonoBehaviour:
   ObservedComponentsFoldoutOpen: 1
   Group: 0
   prefixField: -1
-  Synchronization: 1
-  OwnershipTransfer: 2
+  Synchronization: 3
+  OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
   - {fileID: 8248719642985904269}
