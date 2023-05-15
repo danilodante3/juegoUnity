@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
    
     public float pushForce = 400f; // Nueva variable pushForce
     public float proximityThreshold = 1.5f;
+    public GameObject btnShoot,btnMoveLeft, btnMoveRight, btnJump, btnarriba;
     void Start()
     {
         rb_player = GetComponent<Rigidbody2D>();
@@ -60,6 +61,22 @@ public class Player : MonoBehaviour
     
     public void Move1(int value)
     {
+       if (value == 1)
+        {
+            btnMoveRight.transform.localScale = new Vector3(3.0375f, 2.175f, 2);
+            btnMoveRight.GetComponent<Image>().CrossFadeAlpha(0.4f, 0.1f, true);
+
+
+        }
+
+        if (value == -1)
+        {
+            btnMoveLeft.transform.localScale = new Vector3(3.0375f, 2.175f, 2);
+            btnMoveLeft.GetComponent<Image>().CrossFadeAlpha(0.4f, 0.1f, true);
+
+
+        }
+
 
         if (GamerControler.instance.isScore == false && GamerControler.instance.EndMatch == false)
         {
@@ -70,21 +87,50 @@ public class Player : MonoBehaviour
     {
         horialAxis = 0;
 
+        if (value == 1)
+        {
+            btnMoveRight.transform.localScale = new Vector3(2.0375f, 1.175f, 1);
+            btnMoveRight.GetComponent<Image>().CrossFadeAlpha(0.4f, 0.1f, true);
 
 
+        }
+
+        if (value == -1)
+        {
+            btnMoveLeft.transform.localScale = new Vector3(2.0375f, 1.175f, 1);
+            btnMoveLeft.GetComponent<Image>().CrossFadeAlpha(0.4f, 0.1f, true);
+
+
+        }
     }
 
     public void Shoot()
     {
+        btnShoot.transform.localScale = new Vector3(9f, 5f, 2);
+        btnShoot.GetComponent<Image>().CrossFadeAlpha(0.4f, 0.1f, true);
         if (canShoot == true)
         {
             _ball.GetComponent<Rigidbody2D>().AddForce(new Vector2(-400, 500));
 
-            
+            // Verificar la distancia entre el AI y el jugador
+            float distanceToAi = Vector2.Distance(transform.position, _Ai.transform.position);
+            if (distanceToAi < proximityThreshold)
+            {
+                // Empujar al AI hacia atrás
+                Vector2 pushDirection = (_Ai.transform.position - transform.position).normalized;
+                _Ai.GetComponent<Ai>().ApplyPush(pushDirection, pushForce);
+            }
         }
     }
-
-
+    public void Shootarriba()
+    {
+        btnarriba.transform.localScale = new Vector3(9f, 5f, 2);
+        btnarriba.GetComponent<Image>().CrossFadeAlpha(0.4f, 0.1f, true);
+        if (canShoot == true)
+        {
+            _ball.GetComponent<Rigidbody2D>().AddForce(new Vector2(-400, 500));
+        }
+    }
 
 
     public void ShootA()
@@ -105,22 +151,22 @@ public class Player : MonoBehaviour
         }
     }
     
-
-    
-
-
-
-
-
     public void StopShoot()
     {
-
+        btnShoot.transform.localScale = new Vector3(8.9675f, 4.27f, 1);
+        btnShoot.GetComponent<Image>().CrossFadeAlpha(2f, 0.2f, true);
     }
-
+    public void StopShootarriba()
+    {
+        btnarriba.transform.localScale = new Vector3(8.9675f, 4.27f, 1);
+        btnarriba.GetComponent<Image>().CrossFadeAlpha(2f, 0.2f, true);
+    }
     public void Jump()
     {
+     
         if (grounded == true)
         {
+            
             canHead = true;
             rb_player.velocity = new Vector2(rb_player.velocity.x, 15);
 
@@ -135,11 +181,26 @@ public class Player : MonoBehaviour
             }
         }
     }
-    public void StopJump()
+    public void jump1()
     {
+        btnJump.transform.localScale = new Vector3(9f, 5f, 2);
+        btnJump.GetComponent<Image>().CrossFadeAlpha(0.4f, 0.1f, true);
+        if (grounded == true && GamerControler.instance.isScore == false && GamerControler.instance.EndMatch == false)
+        {
+            canHead = true;
+            rb_player.velocity = new Vector2(rb_player.velocity.x, 15);
+
+
+        }
 
     }
-    
+    public void StopJump()
+    {
+        btnJump.transform.localScale = new Vector3(8.9675f, 4.27f, 1);
+        btnJump.GetComponent<Image>().CrossFadeAlpha(2f, 0.2f, true);
+
+    }
+
 
 
 

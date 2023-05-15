@@ -23,10 +23,7 @@ public class Ai : MonoBehaviour
 
     private void Update()
     {
-        if (GamerControler.instance.isScore || GamerControler.instance.EndMatch)
-        {
-            return;
-        }
+        
 
         ballPosition = _ball.transform.position;
         Vector2 playerPosition = _player.transform.position;
@@ -47,7 +44,7 @@ public class Ai : MonoBehaviour
             // Comprobar la distancia entre el jugador y la AI
             float distanceToPlayer = Mathf.Abs(playerPosition.x - transform.position.x);
 
-            if (distanceToPlayer < 2.4f)
+            if (distanceToPlayer < 2.8f)
             {
                 // Retroceder un poco para evitar quedar demasiado cerca del jugador
                 if (playerPosition.x > transform.position.x)
@@ -159,4 +156,5 @@ public class Ai : MonoBehaviour
     {
         rb_Ai.AddForce(pushDirection * pushForce, ForceMode2D.Impulse);
     }
+
 }

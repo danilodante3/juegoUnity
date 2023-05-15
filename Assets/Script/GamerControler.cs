@@ -21,10 +21,12 @@ public class GamerControler : MonoBehaviour
     public int number_GoalsRigh, number_GoalsLef;
     private bool isPaused = false;
     public GameObject winMPanel;
-    public AudioClip winSound, lolsad;
     public SpriteRenderer headPlayer, shoePlayer, headAi, shoeAi;
     public AudioClip losingMusic, losingAi;
 
+
+    public Image flagLeft1, flagRight;
+    public Text nameLeft1, nameRight;
     private void Awake()
     {
         if (instance == null)
@@ -37,7 +39,7 @@ public class GamerControler : MonoBehaviour
     {
         number_GoalsRight = 0;
         number_GoalsLeft = 0;
-        tiempoJuego = 280;
+        tiempoJuego = 45;
         _ball = GameObject.FindGameObjectWithTag("ball");
         _Ai = GameObject.FindGameObjectWithTag("Ai");
         _Player = GameObject.FindGameObjectWithTag("Player");
@@ -54,6 +56,12 @@ public class GamerControler : MonoBehaviour
         headAi.sprite = Uiteam.instance.head[PlayerPrefs.GetInt("valueAi", 1) - 1];
         shoeAi.sprite = Uiteam.instance.shoe[PlayerPrefs.GetInt("valueAi", 1) - 1];
 
+        int selectedPlayerTeam = PlayerPrefs.GetInt("valuePlayer", 1);
+        int selectedAiTeam = PlayerPrefs.GetInt("valueAi", 1);
+        flagLeft1.sprite = Uiteam.instance.FlagTeam[selectedAiTeam - 1];
+        flagRight.sprite = Uiteam.instance.FlagTeam[selectedPlayerTeam - 1];
+        nameLeft1.text = Uiteam.instance.NameTeam[selectedAiTeam - 1];
+        nameRight.text = Uiteam.instance.NameTeam[selectedPlayerTeam - 1];
 
         StartCoroutine(InicioJuego());
         
@@ -227,9 +235,7 @@ public class GamerControler : MonoBehaviour
 
         Time.timeScale = 0;
         AudioListener.pause = true;
-        AudioSource audioSource = GetComponent<AudioSource>();
-        audioSource.clip = winSound;
-        audioSource.Play();
+        
     }
 
     public void ReturnToMenu()
