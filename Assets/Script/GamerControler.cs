@@ -175,7 +175,7 @@ public class GamerControler : MonoBehaviour
         // Restablecer variables y componentes
         number_GoalsRight = 0;
         number_GoalsLeft = 0;
-        tiempoJuego = 280;
+        tiempoJuego = 50;
         isScore = false;
         EndMatch = false;
 

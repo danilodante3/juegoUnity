@@ -13,15 +13,15 @@ public class Exibicion : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       // ValueAi= PlayerPrefs.GetInt("valueAi, 1");
+        // ValueAi= PlayerPrefs.GetInt("valueAi, 1");
     }
 
     // Update is called once per frame
     void Update()
     {
-        flagPlayer.sprite = Uiteam.instance.FlagTeam[PlayerPrefs.GetInt("valuePlayer", 1)- 1];
+        flagPlayer.sprite = Uiteam.instance.FlagTeam[PlayerPrefs.GetInt("valuePlayer", 1) - 1];
         namePlayer.text = Uiteam.instance.NameTeam[PlayerPrefs.GetInt("valuePlayer", 1) - 1];
-        txtValuePlayer.text = PlayerPrefs.GetInt("valuePlayer", 1)+ "/4";
+        txtValuePlayer.text = PlayerPrefs.GetInt("valuePlayer", 1) + "/4";
 
 
 
@@ -33,12 +33,13 @@ public class Exibicion : MonoBehaviour
     }
     public void regresar()
     {
-        
+
         SceneManager.LoadScene("MENU");
     }
-    public void CargarJuego()
+    public void jugar()
     {
         SceneManager.LoadScene("JUEGO");
+
     }
     public void Playerleft()
     {

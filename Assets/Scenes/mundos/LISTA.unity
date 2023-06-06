@@ -729,6 +729,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2026119114}
+    - target: {fileID: 3548006707882067732, guid: 49eda80a850c19f4aabee3667626bc69, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3548006707882067734, guid: 49eda80a850c19f4aabee3667626bc69, type: 3}
       propertyPath: m_Name
       value: Crear
@@ -830,6 +834,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 712970252}
+    - target: {fileID: 6719412346020422369, guid: 5c8cba1f927ba7a4b896f33391bf5418, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6719412346020422370, guid: 5c8cba1f927ba7a4b896f33391bf5418, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

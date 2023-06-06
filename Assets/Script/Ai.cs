@@ -10,7 +10,6 @@ public class Ai : MonoBehaviour
     private Rigidbody2D rb_Ai;
     public bool canShootAi, canHead, grounded;
     public LayerMask ground_Layer;
-    public float pushForce = 200f;
 
     private Vector2 ballPosition;
 
@@ -143,8 +142,10 @@ public class Ai : MonoBehaviour
 
     private void Shoot()
     {
-        Vector2 shootDirection = (_player.transform.position - transform.position).normalized;
-        _ball.GetComponent<Rigidbody2D>().AddForce(shootDirection * pushForce);
+        if (canShootAi)
+        {
+            _ball.GetComponent<Rigidbody2D>().AddForce(new Vector2(30, 50));
+        }
     }
 
     private void Jump()
@@ -152,9 +153,7 @@ public class Ai : MonoBehaviour
         rb_Ai.velocity = new Vector2(rb_Ai.velocity.x, 20);
     }
 
-    public void ApplyPush(Vector2 pushDirection, float pushForce)
-    {
-        rb_Ai.AddForce(pushDirection * pushForce, ForceMode2D.Impulse);
-    }
+   
+    
 
 }
