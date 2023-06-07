@@ -23,7 +23,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/mundos/ONLINE.unity
     guid: 15993e4b91f853342a2e5480a1646863
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/mundos/ONLINEV1.unity
     guid: fbe29939d6453434bb0b12e37b71f1e4
   - enabled: 0
